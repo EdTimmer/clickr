@@ -5,14 +5,14 @@ const Photo = conn.define('photo', {
   imageURL: {
     type: Sequelize.TEXT
   },
-  // title: {
-  //   type: Sequelize.STRING,
-  //   allowNull: true
-  // },
-  // description: {
-  //   type: Sequelize.TEXT,
-  //   allowNull: true
-  // }
+  title: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  description: {
+    type: Sequelize.TEXT,
+    allowNull: true
+  }
 });
 
 module.exports = Photo;

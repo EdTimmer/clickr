@@ -6,8 +6,11 @@ const seed = require('./seed');
 
 Photo.belongsTo(Album);
 Album.hasMany(Photo);
+Album.belongsTo(User);
+User.hasMany(Album);
 Photo.belongsTo(User);
 User.hasMany(Photo);
+
 
 const syncAndSeed = () => {
   return conn.sync({ force: true })

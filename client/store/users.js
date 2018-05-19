@@ -33,7 +33,7 @@ const reducer = (state = [], action) => {
   case UPDATE_USER:
     console.log(action.user)
     return state.map(user => user.id === action.user.id ? action.user : user);
-  case GOT_USER:
+  case GET_USER:
     return [...state, action.user];
   default:
     return state;
