@@ -123,7 +123,7 @@ class User extends React.Component {
           }
         </div>
         <div align="center">
-          <p>Photos:</p>
+          
           {
             photosUser.map(photo => {
               return (
