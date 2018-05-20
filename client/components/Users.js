@@ -5,19 +5,17 @@ import { Link } from 'react-router-dom';
 const Users = ({users, albums, photos}) => {
   if (users.length > 0) {
     return (
-      <div className="container">
-        <h1>All Users</h1>
-        <div>
-          <p><i>Number of users:</i> <strong>{users.length}</strong></p>
-          <Link to="/usercreate"><button>Add new user</button></Link>
-        </div>
-        <div>
+      <div className="container row">
+        
+        
+        <div className="col">
+          <h1>All Users</h1><br />
           {
             users.map(user => {
               return (
                 <div key={user.id}>
                   <div>
-                    <Link to={`/users/${user.id}`}>{user.name}</Link>
+                    <p><Link to={`/users/${user.id}`}>{user.name}</Link></p>
                     <p><i>Number of albums:</i> {albums.filter( album => album.userId === user.id).length}</p> 
                     <p><i>Number of photos:</i> {photos.filter( photo => photo.userId === user.id).length}</p>                    
                   </div>
@@ -25,6 +23,10 @@ const Users = ({users, albums, photos}) => {
               );
             })
           }
+        </div>
+        <div className="col">
+          <p><i>Number of users:</i> <strong>{users.length}</strong></p>
+          <Link to="/usercreate"><button>Add new user</button></Link>
         </div>
       </div>
     );

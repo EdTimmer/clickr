@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import PhotoCreate from './PhotoCreate';
 import saveUser from '../store/users';
 import AlbumCreate from './AlbumCreate';
-// import saveAlbum from '../store/albums';
 
 class User extends React.Component {
   constructor(props) {
@@ -48,7 +47,7 @@ class User extends React.Component {
     const themes = [
       {
         id: 1,
-        name: 'Light Blue',
+        name: 'White',
         file: 'style-1.css'
       },
       {
@@ -58,7 +57,7 @@ class User extends React.Component {
       },
       {
         id: 3,
-        name: 'Beige',
+        name: 'Light Blue',
         file: 'style-3.css'
       },
       {
@@ -67,6 +66,7 @@ class User extends React.Component {
         file: 'style-4.css'
       }
     ];
+
     return (
       <div className="container">
         <h1>{ user.name }</h1>   

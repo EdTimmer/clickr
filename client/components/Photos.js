@@ -20,7 +20,7 @@ const Photos = ({photos, albums, users})=> {
                   <img src={photo.imageURL} width={400} /><br />
                   <Link to={`/photos/${photo.id}`}>details</Link><br />
                   <p>by: {user.name}</p>
-                  <i>In album:</i> {albumName}
+                  <p><i>In album:</i> {albumName}</p>
                 </div>
               );
             })

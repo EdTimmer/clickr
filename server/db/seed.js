@@ -15,14 +15,14 @@ const users = [
     lastName: 'Aperture',
     email: 'curly@gmail.com',
     isAdmin: false,
-    theme: 'style-2.css'
+    theme: 'style-1.css'
   },
   {
     firstName: 'Larry',
     lastName: 'Exposure',
     email: 'larry@gmail.com',
     isAdmin: false,
-    theme: 'style-3.css'
+    theme: 'style-1.css'
   }
 ];
 

@@ -9,9 +9,9 @@ const Nav = ({ path }) => {
         <div className="col">
           {
             path === '/' ? (
-              <p>clickr</p>
+              <p>c l i c k r</p>
             ) : (
-              <Link to="/">clickr</Link>
+              <Link to="/">c l i c k r</Link>
             )
           }
         </div>

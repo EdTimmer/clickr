@@ -4,8 +4,13 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <div className="container">
-      <h1>c l i c k r</h1>
+    <div className="container">      
+      <div>
+        <img align="center" src="/vendor/images/city.jpg" width={1100} />
+      </div><br />
+      <div>
+        <h1 align="right">c l i c k r     </h1>
+      </div>
     </div>
   );
 };
