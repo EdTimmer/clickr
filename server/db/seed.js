@@ -80,7 +80,7 @@ const photos = [
   {
     imageURL: '/images/city.jpg',
     title: 'Three',
-    description: 'Bridge',
+    description: 'city',
     albumId: 3,
     userId: 3
   }
