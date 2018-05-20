@@ -6,7 +6,7 @@ class PhotoCreate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageURL: this.props.photo ? this.props.photo.imageURL : '/images/noImage.jpg',
+      imageURL: this.props.photo ? this.props.photo.imageURL : null,
       title: '',
       description: '',
       userId: this.props.user.id,
@@ -47,7 +47,7 @@ class PhotoCreate extends Component {
   render(){
     const { user, albums, albumsUser } = this.props;
     const { onChange, onSave, previewFile } = this;
-    const { albumId } = this.state;
+    const { albumId, imageURL } = this.state;
     if (!user) return <h1>You are not authorized to access this page.</h1>;
     return (
       <div>
@@ -73,7 +73,7 @@ class PhotoCreate extends Component {
                 }
               </select>
             </div>
-            <button type="submit" disabled={albumId * 1 === -1}> Upload </button>
+            <button type="submit" disabled={(albumId * 1 === -1) || !imageURL }> Upload </button>
           </form>
         </div>
       </div>

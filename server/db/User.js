@@ -24,6 +24,10 @@ const User = conn.define('user', {
   isAdmin: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
+  },
+  theme: {
+    type: Sequelize.STRING,
+    defaultValue: 'style-1.css'
   }
 }, {
   getterMethods: {

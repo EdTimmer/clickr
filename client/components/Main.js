@@ -10,7 +10,8 @@ import Albums from './Albums';
 import Photos from './Photos';
 import Users from './Users';
 import User from './User';
-// import PhotoCrete from './PhotoCreate';
+import Album from './Album';
+import Photo from './Photo';
 
 class Main extends React.Component {
   componentDidMount() {
@@ -24,6 +25,8 @@ class Main extends React.Component {
           <div className="container-fluid">
             <Switch>
               <Route path="/users/:id" exact render={({match, history}) => <User id={ match.params.id * 1 } history={ history } /> } />
+              <Route path="/albums/:id" exact render={({match, history}) => <Album id={ match.params.id * 1 } history={ history } /> } />
+              <Route path="/photos/:id" exact render={({match, history}) => <Photo id={ match.params.id * 1 } history={ history } /> } />
               <Route exact path="/users" component={ Users } />
               <Route exact path="/albums" component={ Albums } />
               <Route exact path="/photos" component={ Photos } />

@@ -7,19 +7,22 @@ const users = [
     firstName: 'Moe',
     lastName: 'Flash',
     email: 'moe@gmail.com',
-    isAdmin: true
+    isAdmin: true,
+    theme: 'style-1.css'
   },
   {
     firstName: 'Curly',
-    lastName: 'Apperture',
+    lastName: 'Aperture',
     email: 'curly@gmail.com',
-    isAdmin: false
+    isAdmin: false,
+    theme: 'style-2.css'
   },
   {
     firstName: 'Larry',
     lastName: 'Exposure',
     email: 'larry@gmail.com',
-    isAdmin: false
+    isAdmin: false,
+    theme: 'style-3.css'
   }
 ];
 
