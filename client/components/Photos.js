@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const Photos = ({photos, albums, users})=> {
+const Photos = ({photos, albums, users}) => {
   if (photos.length > 0) {
     return (
       <div>
@@ -14,7 +14,6 @@ const Photos = ({photos, albums, users})=> {
               const album = albums.find(album => album.id === photo.albumId);
               const user = users.find(user => user.id === photo.userId);
               const albumName = album ? (<Link to={`/albums/${album.id}`}>{album.name}</Link>) : ('none');
-    
               return (
                 <div key={photo.id}>
                   <img src={photo.imageURL} width={400} /><br />

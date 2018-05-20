@@ -33,9 +33,8 @@ class Album extends React.Component {
           {
             showCreate ? <PhotoCreateInAlbum userId={album.userId} albumId={id} parentHistory={this.props.history} /> : null
           }
-        </div>
-        <div>
-          
+        </div><br />
+        <div align="center">
           {
             photosAlbum.map(photo => {
               return (
