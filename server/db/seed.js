@@ -43,23 +43,44 @@ const albums = [
 
 const photos = [
   {
-    imageURL: '/images/one.jpg',
+    imageURL: '/images/ed1.jpg',
     title: 'One',
     description: 'Image One',
     albumId: 1,
     userId: 1
   },
   {
-    imageURL: '/images/two.jpg',
+    imageURL: '/images/natik_camera.jpg',
     title: 'Two',
     description: 'Image Two',
+    albumId: 1,
+    userId: 1
+  },
+  {
+    imageURL: '/images/alpacas.jpg',
+    title: 'Three',
+    description: 'Image Three',
     albumId: 2,
     userId: 2
   },
   {
-    imageURL: '/images/three.jpg',
+    imageURL: '/images/bridge.jpg',
+    title: 'Three',
+    description: 'Bridge',
+    albumId: 2,
+    userId: 2
+  },
+  {
+    imageURL: '/images/empire.jpg',
     title: 'Three',
     description: 'Image Three',
+    albumId: 3,
+    userId: 3
+  },
+  {
+    imageURL: '/images/city.jpg',
+    title: 'Three',
+    description: 'Bridge',
     albumId: 3,
     userId: 3
   }
