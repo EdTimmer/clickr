@@ -7,7 +7,7 @@ const Photo = ({photo}) => {
     return null;
   }
   return (
-    <div>
+    <div align="center">
       <img src={photo.imageURL} width={600} /><br />
       <p>{photo.title}</p>
       <p>{photo.description}</p>

@@ -108,7 +108,7 @@ class User extends React.Component {
             </select>
           </div>
         </div>
-        <div><br />
+        <div className="center"><br />
           <p>Albums:</p>
           {
             albumsUser.map(album => {
@@ -122,7 +122,7 @@ class User extends React.Component {
             })
           }
         </div>
-        <div>
+        <div align="center">
           <p>Photos:</p>
           {
             photosUser.map(photo => {

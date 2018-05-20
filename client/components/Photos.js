@@ -8,7 +8,7 @@ const Photos = ({photos, albums, users})=> {
       <div>
         <h1>All Photos</h1>
           <p><i>Number of photos in clickr:</i> <strong>{photos.length}</strong></p>
-        <div>
+        <div align="center">
           {
             photos.map(photo => {
               const album = albums.find(album => album.id === photo.albumId);
