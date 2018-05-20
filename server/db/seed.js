@@ -64,9 +64,16 @@ const photos = [
     userId: 2
   },
   {
-    imageURL: '/images/bridge.jpg',
+    imageURL: '/images/Katya2.jpg',
     title: 'Three',
-    description: 'Bridge',
+    description: 'Katya',
+    albumId: 2,
+    userId: 2
+  },
+  {
+    imageURL: '/images/Masha&Shurik.jpg',
+    title: 'Three',
+    description: 'Masha and Shurik',
     albumId: 2,
     userId: 2
   },
