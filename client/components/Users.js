@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 const Users = ({users, albums, photos}) => {
   if (users.length > 0) {
     return (
-      <div className="container row">
-        
-        
+      <div className="conatiner">
+      <div className="row">   
+        <div className="col" />           
         <div className="col">
           <h1>All Users</h1><br />
           {
@@ -28,6 +28,8 @@ const Users = ({users, albums, photos}) => {
           <p><i>Number of users:</i> <strong>{users.length}</strong></p>
           <Link to="/usercreate"><button>Add new user</button></Link>
         </div>
+        <div className="col" />
+      </div>
       </div>
     );
   }
