@@ -3,20 +3,28 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PhotoCreate from './PhotoCreate';
 import saveUser from '../store/users';
+import AlbumCreate from './AlbumCreate';
+// import saveAlbum from '../store/albums';
 
 class User extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showCreate: false,
+      showPhotoCreate: false,
+      showAlbumCreate: false,
       theme: this.props.user ? this.props.user.theme : 'style-1.css'
     };
-    this.showPhotoCreate = this.showPhotoCreate.bind(this);
+    this.photoCreate = this.photoCreate.bind(this);
+    this.albumCreate = this.albumCreate.bind(this);
     this.onChange = this.onChange.bind(this);
   }
-  showPhotoCreate(ev) {
+  photoCreate(ev) {
     ev.preventDefault();
-    this.setState({ showCreate: true });
+    this.setState({ showPhotoCreate: true });
+  }
+  albumCreate(ev) {
+    ev.preventDefault();
+    this.setState({ showAlbumCreate: true });
   }
   onChange(ev) {
     this.setState({ [ev.target.name]: ev.target.value });
@@ -31,8 +39,8 @@ class User extends React.Component {
   }
   render() {
     const { user, albumsUser, photosUser } = this.props;
-    const { showPhotoCreate, changeTheme, onChange, changeTheme1, changeTheme2, changeTheme3, changeTheme4 } = this;
-    const { showCreate, theme } = this.state;
+    const { photoCreate, albumCreate, changeTheme, onChange } = this;
+    const { showPhotoCreate, showAlbumCreate, theme } = this.state;
     if (!user || !albumsUser) {
       return null;
     }
@@ -40,19 +48,23 @@ class User extends React.Component {
     const themes = [
       {
         id: 1,
-        name: 'style-1.css'
+        name: 'Light Blue',
+        file: 'style-1.css'
       },
       {
         id: 2,
-        name: 'style-2.css'
+        name: 'Forest Green',
+        file: 'style-2.css'
       },
       {
         id: 3,
-        name: 'style-3.css'
+        name: 'Beige',
+        file: 'style-3.css'
       },
       {
         id: 4,
-        name: 'style-4.css'
+        name: 'Dark Grey',
+        file: 'style-4.css'
       }
     ];
     return (
@@ -62,12 +74,22 @@ class User extends React.Component {
           <div className="col">
             <div>
               {
-                showCreate ? null : ( <button onClick={ showPhotoCreate }> Add Photo </button> )
+                showPhotoCreate ? null : ( <button onClick={ photoCreate }> Add Photo </button> )
               }
             </div>
             <div>
               {
-                showCreate ? <PhotoCreate id={this.props.id} parentHistory={this.props.history} albumsUser={ albumsUser } /> : null
+                showPhotoCreate ? <PhotoCreate id={this.props.id} parentHistory={this.props.history} albumsUser={ albumsUser } /> : null
+              }
+            </div>
+            <div>
+              {
+                showAlbumCreate ? null : ( <button onClick={ albumCreate }> Add Album </button> )
+              }
+            </div>
+            <div>
+              {
+                showAlbumCreate ? <AlbumCreate userId={this.props.id} parentHistory={this.props.history} /> : null
               }
             </div>
           </div>
@@ -77,7 +99,7 @@ class User extends React.Component {
               {
                 themes.map(el => {
                   return (
-                    <option key={el.id} value={el.name}>
+                    <option key={el.id} value={el.file}>
                       {el.name}
                     </option>
                   );
