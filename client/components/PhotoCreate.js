@@ -22,9 +22,10 @@ class PhotoCreate extends Component {
     const file = preview ? document.querySelector('input[type=file]').files[0] : null;
     const reader = new FileReader();
 
-    reader.addEventListener("load", () => {
+    reader.addEventListener('load', () => {
       const image = reader.result;
       this.setState({ imageURL: image });
+      console.log('image is:', image);
       preview.src = image;
     }, false);
 
@@ -63,7 +64,7 @@ class PhotoCreate extends Component {
             <div>
               <label htmlFor='imageURL'>New Photo: </label><br />
               <input type="file" name='imageURL' onChange={previewFile} />
-              <img src="/images/Preview-icon.png" alt="Image preview..." width={100} />
+              <img src="/images/Preview-icon.png" alt="Image preview..." width={100} /> 
             </div>
             <div className='form-group'>
               <select name='albumId' onChange={onChange}>

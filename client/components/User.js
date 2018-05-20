@@ -81,7 +81,7 @@ class User extends React.Component {
               {
                 showPhotoCreate ? <PhotoCreate id={this.props.id} parentHistory={this.props.history} albumsUser={ albumsUser } /> : null
               }
-            </div>
+            </div><br />
             <div>
               {
                 showAlbumCreate ? null : ( <button onClick={ albumCreate }> Add Album </button> )
@@ -108,16 +108,16 @@ class User extends React.Component {
             </select>
           </div>
         </div>
-        <div>
+        <div><br />
           <p>Albums:</p>
           {
             albumsUser.map(album => {
               return (
-                <div key={album.id}>
-                  <div>
+                <ul key={album.id}>
+                  <li>
                     <Link to={`/albums/${album.id}`}>{album.name}</Link>
-                  </div>
-                </div>
+                  </li>
+                </ul>
               );
             })
           }

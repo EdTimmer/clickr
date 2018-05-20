@@ -67,7 +67,7 @@ export const saveAlbum = (album, history) => (
       axios.post(`api/albums`, album)
         .then(result => result.data)
         .then(album => dispatch(createAlbumInStore(album)))
-        .then( () => history.push('/albums'))
+        // .then( () => history.push('/albums'))
     )
   )
 );
