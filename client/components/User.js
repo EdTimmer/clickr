@@ -12,11 +12,6 @@ class User extends React.Component {
       theme: this.props.user ? this.props.user.theme : 'style-1.css'
     };
     this.showPhotoCreate = this.showPhotoCreate.bind(this);
-    this.saveTheme = this.saveTheme.bind(this);
-    this.changeTheme1 = this.changeTheme1.bind(this);
-    this.changeTheme2 = this.changeTheme2.bind(this);
-    this.changeTheme3 = this.changeTheme3.bind(this);
-    this.changeTheme4 = this.changeTheme4.bind(this);
     this.onChange = this.onChange.bind(this);
   }
   showPhotoCreate(ev) {
@@ -25,7 +20,6 @@ class User extends React.Component {
   }
   onChange(ev) {
     this.setState({ [ev.target.name]: ev.target.value });
-    // console.log(ev.target.value);
   }
   saveTheme(ev) {
     ev.preventDefault();
@@ -35,18 +29,6 @@ class User extends React.Component {
     };
     this.props.saveUser(userInfo);
   }
-  changeTheme1() {
-    document.getElementById('theme_css').href = 'style-1.css';
-  }
-  changeTheme2() {
-    document.getElementById('theme_css').href = 'style-2.css';
-  }
-  changeTheme3() {
-    document.getElementById('theme_css').href = 'style-3.css';
-  }
-  changeTheme4() {
-    document.getElementById('theme_css').href = 'style-4.css';
-  }
   render() {
     const { user, albumsUser, photosUser } = this.props;
     const { showPhotoCreate, changeTheme, onChange, changeTheme1, changeTheme2, changeTheme3, changeTheme4 } = this;
@@ -54,7 +36,6 @@ class User extends React.Component {
     if (!user || !albumsUser) {
       return null;
     }
-    // console.log('theme in local state is', this.state.theme);
     document.getElementById('theme_css').href = this.state.theme;
     const themes = [
       {
@@ -76,15 +57,23 @@ class User extends React.Component {
     ];
     return (
       <div className="container">
-        <h1>{ user.name }</h1>
-        <button type="submit" onClick={changeTheme1}>Theme 1</button>
-        <button type="submit" onClick={changeTheme2}>Theme 2</button>
-        <button type="submit" onClick={changeTheme3}>Theme 3</button>
-        <button type="submit" onClick={changeTheme4}>Theme 4</button>
-        
-        <form onSubmit={ changeTheme }>          
+        <h1>{ user.name }</h1>   
+        <div className="row">
+          <div className="col">
+            <div>
+              {
+                showCreate ? null : ( <button onClick={ showPhotoCreate }> Add Photo </button> )
+              }
+            </div>
+            <div>
+              {
+                showCreate ? <PhotoCreate id={this.props.id} parentHistory={this.props.history} albumsUser={ albumsUser } /> : null
+              }
+            </div>
+          </div>
+          <div className="col">
+            <p><i>Select Theme</i></p>
             <select value={theme} name="theme" onChange={onChange}>
-              <option value="-1"> Select Theme </option>
               {
                 themes.map(el => {
                   return (
@@ -94,17 +83,8 @@ class User extends React.Component {
                   );
                 })
               }
-            </select>          
-          <button type="submit"> Change Theme </button>
-        </form> 
-          {
-            showCreate ? null : ( <button onClick={ showPhotoCreate }> Add Photo </button> )
-          }   
-             
-        <div>
-          {
-            showCreate ? <PhotoCreate id={this.props.id} parentHistory={this.props.history} albumsUser={ albumsUser } /> : null
-          }
+            </select>
+          </div>
         </div>
         <div>
           <p>Albums:</p>

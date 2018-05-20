@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PhotoCreateInAlbum from './PhotoCreateInAlbum';
 
 class Album extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class Album extends React.Component {
     this.setState({ showCreate: true });
   }
   render() {
-    const { user, users, album, photosAlbum, albums, photos, albumsUser, photosUser } = this.props;
+    const { id, user, users, album, photosAlbum, albums, photos, albumsUser, photosUser } = this.props;
     const { showPhotoCreate } = this;
     const { showCreate } = this.state;
     if (!album) {
@@ -30,7 +31,7 @@ class Album extends React.Component {
           }        
         <div>
           {
-            showCreate ? <PhotoCreate id={this.props.id} parentHistory={this.props.history} albumsUser={ albumsUser } /> : null
+            showCreate ? <PhotoCreateInAlbum userId={album.userId} albumId={id} parentHistory={this.props.history} /> : null
           }
         </div>
         <div>
@@ -66,7 +67,8 @@ const mapStateToProps = ({ albums, photos }, { id }) => {
     // albumsUser,
     // photosUser,
     album,
-    photosAlbum
+    photosAlbum,
+    id
   };
 };
 
