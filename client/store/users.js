@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const GOT_USERS = 'GOT_USERS';
-const DELETE_USER ='DELETE_USER';
+const DELETE_USER = 'DELETE_USER';
 const GET_USER = 'GET_USER';
 const UPDATE_USER = 'UPDATE_USER';
 
@@ -19,6 +19,7 @@ const updateUserInStore = user => {
   const action = { type: UPDATE_USER, user };
   return action;
 };
+
 export const addUser = user => {
   const action = { type: GOT_USER, user };
   return action;
@@ -26,17 +27,16 @@ export const addUser = user => {
 
 const reducer = (state = [], action) => {
   switch (action.type) {
-  case GOT_USERS:
-    return action.users;
-  case DELETE_USER:
-    return state.filter(user => user.id !== action.user.id);
-  case UPDATE_USER:
-    console.log(action.user)
-    return state.map(user => user.id === action.user.id ? action.user : user);
-  case GET_USER:
-    return [...state, action.user];
-  default:
-    return state;
+    case GOT_USERS:
+      return action.users;
+    case DELETE_USER:
+      return state.filter(user => user.id !== action.user.id);
+    case UPDATE_USER:
+      return state.map(user => user.id === action.user.id ? action.user : user);
+    case GET_USER:
+      return [...state, action.user];
+    default:
+      return state;
   }
 };
 
@@ -48,23 +48,21 @@ export const getUsers = () => (
   }
 );
 
-export const saveUser = (userInfo, history) => (
+export const saveUser = (userInfo) => (
   dispatch => {
-    return axios.put(`api/users/${userInfo.id}`, userInfo)
+    return axios.put(`/api/users/${userInfo.id}`, userInfo)
       .then(result => result.data)
-      .then(user => {
-        dispatch(updateUserInStore(user));
-      })
-      .then(() => history.push('/'));
+      .then(user => dispatch(updateUserInStore(user)));
   }
 );
 
 export const deleteUser = (user, history) => (
   dispatch => {
-    return axios.delete(`api/users/${user.id}`)
+    return axios.delete(`/api/users/${user.id}`)
       .then( () => dispatch(deleteUserInStore(user)))
-      .then( () => history.push('/users'));
+      .then( () => history.push('/'));
   }
 );
 
 export default reducer;
+// module.exports = deleteUser;

@@ -1,9 +1,11 @@
 import axios from 'axios';
+// import deleteUser from './users';
 
 const GET_PHOTOS = 'GET_PHOTOS';
 const UPDATE_PHOTO = 'UPDATE_PHOTO';
 const CREATE_PHOTO = 'CREATE_PHOTO';
 const DELETE_PHOTO = 'DELETE_PHOTO';
+const DELETE_USER = 'DELETE_USER';
 
 const addPhotosToStore = photos => {
   const action = { type: GET_PHOTOS, photos };
@@ -25,6 +27,11 @@ const updatePhotoInStore = photo => {
   return action;
 };
 
+// const deleteUserInStore = user => {
+//   const action = { type: DELETE_USER, user };
+//   return action;
+// };
+
 const reducer = (state = [], action) => {
   switch (action.type) {
   case GET_PHOTOS:
@@ -35,6 +42,8 @@ const reducer = (state = [], action) => {
     return state.filter(photo => photo.id !== action.photo.id);
   case UPDATE_PHOTO:
     return state.map( photo => photo.id === action.photo.id ? action.photo : photo);
+  // case DELETE_USER:
+  //   return state.filter( photo => photo.userId !== action.user.id);
   default:
     return state;
   }

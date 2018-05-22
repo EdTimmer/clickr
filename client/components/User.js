@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PhotoCreate from './PhotoCreate';
-import saveUser from '../store/users';
+import { saveUser, deleteUser } from '../store/users';
+// import deleteUser from '../store/users';
 import AlbumCreate from './AlbumCreate';
 
 class User extends React.Component {
@@ -16,6 +17,8 @@ class User extends React.Component {
     this.photoCreate = this.photoCreate.bind(this);
     this.albumCreate = this.albumCreate.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.saveTheme = this.saveTheme.bind(this);
+    this.onDelete = this.onDelete.bind(this);
   }
   photoCreate(ev) {
     ev.preventDefault();
@@ -31,14 +34,18 @@ class User extends React.Component {
   saveTheme(ev) {
     ev.preventDefault();
     const userInfo = {
-      id: this.props.id,
+      id: this.props.user.id,
       theme: this.state.theme
     };
     this.props.saveUser(userInfo);
   }
+  onDelete() {
+    console.log('this.props.id is:', this.props.id);
+    this.props.deleteUser(this.props.user);
+  }
   render() {
     const { user, albumsUser, photosUser } = this.props;
-    const { photoCreate, albumCreate, changeTheme, onChange } = this;
+    const { photoCreate, albumCreate, saveTheme, onChange, onDelete } = this;
     const { showPhotoCreate, showAlbumCreate, theme } = this.state;
     if (!user || !albumsUser) {
       return null;
@@ -95,7 +102,8 @@ class User extends React.Component {
           </div>
           <div className="col">
             <p><i>Select Theme</i></p>
-            <select value={theme} name="theme" onChange={onChange}>
+          <form onSubmit={saveTheme}>
+            <select value={theme} name="theme" onChange={ onChange }>
               {
                 themes.map(el => {
                   return (
@@ -106,6 +114,8 @@ class User extends React.Component {
                 })
               }
             </select>
+            <button> Accept Selection </button>
+          </form>
           </div>
         </div>
         <div className="center"><br />
@@ -123,7 +133,6 @@ class User extends React.Component {
           }
         </div>
         <div align="center">
-          
           {
             photosUser.map(photo => {
               return (
@@ -136,6 +145,7 @@ class User extends React.Component {
             })
           }
         </div>
+        <button type="submit" onClick={onDelete}>Delete User</button>
       </div>
     );
   }
@@ -156,8 +166,10 @@ const mapStateToProps = ({ users, albums, photos }, { id }) => {
 };
 
 const mapDispatch = (dispatch, { history }) => {
+  console.log('history in mapDispatch is:', history);
   return {
-    saveUser: (userInfo) => dispatch(saveUser(userInfo))
+    saveUser: (userInfo) => dispatch(saveUser(userInfo)),
+    deleteUser: (user) => dispatch(deleteUser(user, history))
   };
 };
 
