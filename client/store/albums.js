@@ -4,6 +4,7 @@ const GET_ALBUMS = 'GET_ALBUMS';
 const UPDATE_ALBUM = 'UPDATE_ALBUM';
 const CREATE_ALBUM = 'CREATE_ALBUM';
 const DELETE_ALBUM = 'DELETE_ALBUM';
+const DELETE_USER = 'DELETE_USER';
 
 const addAlbumsToStore = albums => {
   const action = { type: GET_ALBUMS, albums };
@@ -35,6 +36,8 @@ const reducer = (state = [], action) => {
     return state.filter(album => album.id !== action.album.id);
   case UPDATE_ALBUM:
     return state.map(album => album.id === action.album.id ? action.album : album);
+  case DELETE_USER:
+    return state.filter( album => album.userId !== action.user.id);
   default:
     return state;
   }

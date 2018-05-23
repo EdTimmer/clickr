@@ -6,9 +6,9 @@ const seed = require('./seed');
 
 Photo.belongsTo(Album);
 Album.hasMany(Photo);
-Album.belongsTo(User);
+Album.belongsTo(User, { onDelete: 'CASCADE'});
 User.hasMany(Album);
-Photo.belongsTo(User);
+Photo.belongsTo(User, { onDelete: 'CASCADE'});
 User.hasMany(Photo);
 
 

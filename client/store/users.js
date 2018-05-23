@@ -60,9 +60,9 @@ export const deleteUser = (user, history) => (
   dispatch => {
     return axios.delete(`/api/users/${user.id}`)
       .then( () => dispatch(deleteUserInStore(user)))
-      .then( () => history.push('/'));
+      .then( () => console.log('HISTORY IN STORE IS:', history))
+      .then( () => history.push('/users'));
   }
 );
 
 export default reducer;
-// module.exports = deleteUser;

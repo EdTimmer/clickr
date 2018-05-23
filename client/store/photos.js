@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import deleteUser from './users';
 
 const GET_PHOTOS = 'GET_PHOTOS';
 const UPDATE_PHOTO = 'UPDATE_PHOTO';
@@ -27,8 +26,8 @@ const updatePhotoInStore = photo => {
   return action;
 };
 
-// const deleteUserInStore = user => {
-//   const action = { type: DELETE_USER, user };
+// const deletePhotosOfUserInStore = (user, photos) => {
+//   const action = { type: DELETE_USER, user, photos };
 //   return action;
 // };
 
@@ -42,8 +41,8 @@ const reducer = (state = [], action) => {
     return state.filter(photo => photo.id !== action.photo.id);
   case UPDATE_PHOTO:
     return state.map( photo => photo.id === action.photo.id ? action.photo : photo);
-  // case DELETE_USER:
-  //   return state.filter( photo => photo.userId !== action.user.id);
+  case DELETE_USER:
+    return state.filter( photo => photo.userId !== action.user.id);
   default:
     return state;
   }
@@ -64,6 +63,13 @@ export const deletePhoto = (photo, history) => (
       .then( () => history.push('/photos'))
   )
 );
+
+// export const deletePhotosOfUser = (user, photos) => (
+//   dispatch => (
+//     Promise.all(photos.forEach(photo => axios.delete(`api/photos/${photo.id}`)))
+//     .then( () => dispatch(deletePhotosOfUserInStore(user, photos)))
+//   )
+// )
 
 export const savePhoto = (photo, history, id) => (
   photo.id ? (

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PhotoCreate from './PhotoCreate';
 import { saveUser, deleteUser } from '../store/users';
-// import deleteUser from '../store/users';
 import AlbumCreate from './AlbumCreate';
 
 class User extends React.Component {
@@ -40,8 +39,7 @@ class User extends React.Component {
     this.props.saveUser(userInfo);
   }
   onDelete() {
-    console.log('this.props.id is:', this.props.id);
-    this.props.deleteUser(this.props.user);
+    this.props.deleteUser({id: this.props.id});
   }
   render() {
     const { user, albumsUser, photosUser } = this.props;
@@ -114,7 +112,7 @@ class User extends React.Component {
                 })
               }
             </select>
-            <button> Accept Selection </button>
+            <button> Save Theme </button>
           </form>
           </div>
         </div>
@@ -153,8 +151,8 @@ class User extends React.Component {
 
 const mapStateToProps = ({ users, albums, photos }, { id }) => {
   const user = users.find( user => user.id === id );
-  const albumsUser = albums.filter( album => album.userId === user.id);
-  const photosUser = photos.filter( photo => photo.userId === user.id);
+  const albumsUser = albums.filter( album => album.userId === id);
+  const photosUser = photos.filter( photo => photo.userId === id);
   return {
     user,
     users,
@@ -166,7 +164,7 @@ const mapStateToProps = ({ users, albums, photos }, { id }) => {
 };
 
 const mapDispatch = (dispatch, { history }) => {
-  console.log('history in mapDispatch is:', history);
+  console.log('HISTORY in mapDispatch is:', history);
   return {
     saveUser: (userInfo) => dispatch(saveUser(userInfo)),
     deleteUser: (user) => dispatch(deleteUser(user, history))
