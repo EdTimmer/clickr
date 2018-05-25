@@ -134,11 +134,8 @@ const mapStateToProps = ({ users, albums, photos }, { id }) => {
   const photosUser = photos.filter( photo => photo.userId === id);
   return {
     user,
-    users,
-    albums,
-    photos,
     albumsUser,
-    photosUser,
+    photosUser
   };
 };
 
