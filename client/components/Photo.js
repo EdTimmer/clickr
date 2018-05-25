@@ -3,14 +3,16 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Photo = ({photo}) => {
-  if(!photo) {
+  if (!photo) {
     return null;
   }
   return (
-    <div align="center">
-      <img src={photo.imageURL} width={600} /><br />
-      <p>{photo.title}</p>
-      <p>{photo.description}</p>
+    <div className="container">
+      <div>
+        <img className="img-home" src={photo.imageURL} /><br />
+        <p>{photo.title}</p>
+        <p>{photo.description}</p>
+      </div>
     </div>
   );
 };

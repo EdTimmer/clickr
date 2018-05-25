@@ -82,10 +82,10 @@ class User extends React.Component {
           <form onSubmit={saveTheme}>
             <select value={theme} name="theme" onChange={ onChange }>
               {
-                themes.map(el => {
+                themes.map(_theme => {
                   return (
-                    <option key={el.id} value={el.file}>
-                      {el.name}
+                    <option key={_theme.id} value={_theme.file}>
+                      {_theme.name}
                     </option>
                   );
                 })

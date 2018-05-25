@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 
 const Albums = ({albums, photos}) => {
   if (albums.length > 0) {
+
+    document.getElementById('theme_css').href = 'style-1.css';
+    
     return (
       <div className="container">
         <h1>All Albums</h1>

@@ -1,3 +1,19 @@
+.img-home {
+  max-width: 100%;
+}
 body {
   background-color: white;
+}
+.container-1 {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+.photos-box {
+  border: none;
+  margin: 15px;
+  padding: 10px;
 }
