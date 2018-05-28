@@ -6,65 +6,41 @@ import { logout } from '../store/sessions';
 
 const Nav = ({ path, user, logout }) => {
   return (
-    <div className="container">
-      <hr />
-      <div className="row">
-        <div className="col">
-          {
-            path === '/' ? (
-              <p>c l i c k r</p>
-            ) : (
-              <Link to="/">c l i c k r</Link>
-            )
-          }
+    <div className="navbar navbar-expand-lg navbar-light container">
+        
+        <div className="nav-item">
+          <NavLink to="/" className="navbar-brand header">c l i c k r</NavLink>
         </div>
-        <div className="col">
-          {
-            path === '/people' ? (
-              <p>People</p>
-            ) : (
-              <Link to="/people">People</Link>
-            )
-          }
+        <div className="nav-item">
+          <NavLink to="/people" className='nav-link' activeClassName="active">People</NavLink>
         </div>
-        <div className="col">
-          {
-            path === '/albums' ? (
-              <p>All Albums</p>
-            ) : (
-              <Link to="/albums">All Albums</Link>
-            )
-          }
+        <div className="nav-item">
+          <NavLink to="/albums" className='nav-link' activeClassName="active">All Albums</NavLink>
         </div>
-        <div className="col">
-          {
-            path === '/photos' ? (
-              <p>All Photos</p>
-            ) : (
-              <Link to="/photos">All Photos</Link>
-            )
-          }
+        <div className="nav-item">
+          <NavLink to="/photos" className='nav-link' activeClassName="active">All Photos</NavLink>
         </div>
         <div className="nav-item">
         {
           user && user.id ? (
             <NavLink to='/' className='nav-link' onClick={ logout }>Logout { user.firstName }</NavLink>
           ) : (
-            <NavLink className="nav-link" to="/login" activeClassName='active'>Log In</NavLink>
+            <NavLink className="nav-link" to="/login" activeClassName="active">Log In</NavLink>
           )
         }
-      </div>
-      <div className="nav-item">
-      {
-        user && user.id ? (
-          null
-        ) : (
-          <NavLink className="nav-link" to="/signup" activeClassName='active'>Sign Up</NavLink>
-        )
-      }
-    </div>
-      </div>
+        </div>
+        <div className="nav-item">
+        {
+          user && user.id ? (
+            null
+          ) : (
+            <NavLink className="nav-link" to="/signup" activeClassName='active'>Sign Up</NavLink>
+          )
+        }
+        </div>
+      
       <hr />
+
     </div>
   );
 };
