@@ -9,7 +9,7 @@ class PhotoCreate extends Component {
       imageURL: this.props.photo ? this.props.photo.imageURL : null,
       title: '',
       description: '',
-      userId: this.props.user.id,
+      personId: this.props.person.id,
       albumId: -1
     };
     this.onChange = this.onChange.bind(this);
@@ -46,10 +46,10 @@ class PhotoCreate extends Component {
   }
 
   render(){
-    const { user, albums, albumsUser } = this.props;
+    const { person, albums, albumsPerson } = this.props;
     const { onChange, onSave, previewFile } = this;
     const { albumId, imageURL } = this.state;
-    if (!user) return <h1>You are not authorized to access this page.</h1>;
+    if (!person) return <h1>You are not authorized to access this page.</h1>;
     return (
       <div>
         <div>
@@ -70,7 +70,7 @@ class PhotoCreate extends Component {
               <select name='albumId' onChange={onChange}>
                 <option value="-1"> Select Album </option>
                 {
-                  albumsUser.map(album => <option key={album.id} value={album.id}> {album.name} </option>)
+                  albumsPerson.map(album => <option key={album.id} value={album.id}> {album.name} </option>)
                 }
               </select>
             </div>
@@ -82,13 +82,13 @@ class PhotoCreate extends Component {
   }
 }
 
-const mapState = ({ users, albums }, { id, albumsUser }) => {
-  const user = users.find(user => user.id === id);
+const mapState = ({ people, albums }, { id, albumsPerson }) => {
+  const person = people.find(person => person.id === id);
   return {
-    users,
-    user,
+    people,
+    person,
     albums,
-    albumsUser
+    albumsPerson
   };
 };
 

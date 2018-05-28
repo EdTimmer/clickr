@@ -9,7 +9,7 @@ class PhotoCreateInAlbum extends Component {
       imageURL: this.props.photo ? this.props.photo.imageURL : '',
       title: '',
       description: '',
-      userId: this.props.userId,
+      personId: this.props.personId,
       albumId: this.props.albumId
     };
     this.onChange = this.onChange.bind(this);
@@ -44,10 +44,10 @@ class PhotoCreateInAlbum extends Component {
   }
 
   render(){
-    const { user, albums, albumsUser } = this.props;
+    const { person, albums, albumsUser } = this.props;
     const { onChange, onSave, previewFile } = this;
     const { albumId, imageURL } = this.state;
-    if (!user) return <h1>You are not authorized to access this page.</h1>;
+    if (!person) return <h1>You are not authorized to access this page.</h1>;
     return (
       <div>
         <div>
@@ -73,12 +73,12 @@ class PhotoCreateInAlbum extends Component {
   }
 }
 
-const mapState = ({ users, albums }, { userId, albumId }) => {
-  const user = users.find(user => user.id === userId);
+const mapState = ({ people, albums }, { personId, albumId }) => {
+  const person = people.find(person => person.id === personId);
   return {
-    userId,
+    personId,
     albumId,
-    user
+    person
   };
 };
 

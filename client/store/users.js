@@ -1,4 +1,5 @@
 import axios from 'axios';
+import headerFunc from './headerFunc';
 
 const GOT_USERS = 'GOT_USERS';
 const DELETE_USER = 'DELETE_USER';
@@ -21,7 +22,7 @@ const updateUserInStore = user => {
 };
 
 export const addUser = user => {
-  const action = { type: GOT_USER, user };
+  const action = { type: GET_USER, user };
   return action;
 };
 

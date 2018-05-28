@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const Photos = ({photos, albums, users}) => {
+const Photos = ({photos, albums, people}) => {
   if (photos.length > 0) {
 
     document.getElementById('theme_css').href = 'style-1.css';
@@ -15,13 +15,13 @@ const Photos = ({photos, albums, users}) => {
           {
             photos.map(photo => {
               const album = albums.find(album => album.id === photo.albumId);
-              const user = users.find(user => user.id === photo.userId);
+              const person = people.find(person => person.id === photo.personId);
               const albumName = album ? (<Link to={`/albums/${album.id}`}>{album.name}</Link>) : ('none');
               return (
                 <div key={photo.id} className="photos-box">
                   <img src={photo.imageURL} height={400} /><br />
                   <Link to={`/photos/${photo.id}`}>details</Link><br />
-                  <p>by: {user.name}</p>
+                  <p>by: {person.name}</p>
                   <p><i>In album:</i> {albumName}</p>
                 </div>
               );
@@ -35,17 +35,17 @@ const Photos = ({photos, albums, users}) => {
     return (
       <div>
         <h4><i>There are no photos.  Please add photos.</i></h4>
-        <Link to="/photocreate">Add photo</Link>
+        {/*<Link to="/photocreate">Add photo</Link>*/}
       </div>
     );
   }
 };
 
-const mapStateToProps = ({ photos, albums, users }) => {
+const mapStateToProps = ({ photos, albums, people }) => {
   return {
     photos,
     albums,
-    users
+    people
   }
 };
 

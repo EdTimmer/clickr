@@ -2,14 +2,17 @@ const conn = require('./conn');
 const User = require('./User');
 const Album = require('./Album');
 const Photo = require('./Photo');
+const Person = require('./Person');
 const seed = require('./seed');
 
 Photo.belongsTo(Album);
 Album.hasMany(Photo);
-Album.belongsTo(User, { onDelete: 'CASCADE'});
-User.hasMany(Album);
-Photo.belongsTo(User, { onDelete: 'CASCADE'});
-User.hasMany(Photo);
+Album.belongsTo(Person, { onDelete: 'CASCADE'});
+Person.hasMany(Album);
+Photo.belongsTo(Person, { onDelete: 'CASCADE'});
+// User.hasMany(Photo);
+Person.hasOne(User);
+// Person.hasOne(User);
 
 
 const syncAndSeed = () => {
@@ -25,6 +28,7 @@ module.exports = {
   models: {
     Photo,
     Album,
-    User
+    User,
+    Person
   }
 };

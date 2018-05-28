@@ -1,7 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link, NavLink } from 'react-router-dom';
+import { logout } from '../store/sessions';
+// import { NavLink } from 'react-router-dom';
 
-const Nav = ({ path }) => {
+const Nav = ({ path, user, logout }) => {
   return (
     <div className="container">
       <hr />
@@ -17,10 +20,10 @@ const Nav = ({ path }) => {
         </div>
         <div className="col">
           {
-            path === '/users' ? (
-              <p>Users</p>
+            path === '/people' ? (
+              <p>People</p>
             ) : (
-              <Link to="/users">Users</Link>
+              <Link to="/people">People</Link>
             )
           }
         </div>
@@ -42,10 +45,40 @@ const Nav = ({ path }) => {
             )
           }
         </div>
+        <div className="nav-item">
+        {
+          user && user.id ? (
+            <NavLink to='/' className='nav-link' onClick={ logout }>Logout { user.firstName }</NavLink>
+          ) : (
+            <NavLink className="nav-link" to="/login" activeClassName='active'>Log In</NavLink>
+          )
+        }
+      </div>
+      <div className="nav-item">
+      {
+        user && user.id ? (
+          null
+        ) : (
+          <NavLink className="nav-link" to="/signup" activeClassName='active'>Sign Up</NavLink>
+        )
+      }
+    </div>
       </div>
       <hr />
     </div>
   );
 };
 
-export default Nav;
+const mapState = state => {
+  return {
+    user: state.user
+  };
+};
+
+const mapDispatch = dispatch => {
+  return {
+    logout: () => dispatch(logout())
+  };
+};
+
+export default connect(mapState, mapDispatch)(Nav);

@@ -8,7 +8,7 @@ class Album extends React.Component {
     super(props);
     this.state = {
       showCreate: false,
-      theme: this.props.user ? this.props.user.theme : 'style-1.css'
+      theme: this.props.person ? this.props.person.theme : 'style-1.css'
     };
     this.showPhotoCreate = this.showPhotoCreate.bind(this);  
   }
@@ -17,7 +17,7 @@ class Album extends React.Component {
     this.setState({ showCreate: true });
   }
   render() {
-    const { id, user, users, album, photosAlbum, albums, photos, albumsUser, photosUser } = this.props;
+    const { id, person, people, album, photosAlbum, albums, photos, albumsUser, photosUser, user } = this.props;
     const { showPhotoCreate } = this;
     const { showCreate } = this.state;
     if (!album) {
@@ -29,15 +29,24 @@ class Album extends React.Component {
     return (
       <div className="container">
         <h1>{ album.name }</h1>
-        <h3>{ user.name }</h3>
+        <h3>{ person.name }</h3>
+        {
+          person.email === user.email ? (
+        <div>
+          <div>
           {
             showCreate ? null : ( <button onClick={ showPhotoCreate }> Add Photo </button> )
-          }        
-        <div>
+          }    
+          </div>    
+          <div>
           {
-            showCreate ? <PhotoCreateInAlbum userId={album.userId} albumId={id} parentHistory={this.props.history} /> : null
+            showCreate ? <PhotoCreateInAlbum personId={album.personId} albumId={id} parentHistory={this.props.history} /> : null
           }
-        </div><br />
+          </div><br />
+        </div>
+          ) : null
+        }        
+        
         <div align="center">
           {
             photosAlbum.map(photo => {
@@ -58,14 +67,14 @@ class Album extends React.Component {
   }
 }
 
-const mapStateToProps = ({ users, albums, photos }, { id }) => {
+const mapStateToProps = ({ people, albums, photos, user }, { id }) => {
   const album = albums.find( album => album.id === id );
   const photosAlbum = photos.filter( photo => photo.albumId === album.id);
-  const user = users.find(user => user.id === album.userId);
-  // const photosUser = photos.filter( photo => photo.userId === user.id);
+  const person = people.find(person => person.id === album.personId);
+  // const photosUser = photos.filter( photo => photo.personId === person.id);
   return {
-    // user,
-    // users,
+    // person,
+    // people,
     // albums,
     // photos,
     // albumsUser,
@@ -73,6 +82,7 @@ const mapStateToProps = ({ users, albums, photos }, { id }) => {
     album,
     photosAlbum,
     id,
+    person,
     user
   };
 };

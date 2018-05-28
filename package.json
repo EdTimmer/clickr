@@ -7,7 +7,7 @@
         "postinstall": "npm run webpack",
         "webpack": "./node_modules/webpack/bin/webpack.js",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start:dev": "npm run webpack -- -w & nodemon server.js --ignore dist/ --ignore src/"
+        "start:dev": "npm run webpack -- -w & JWT_KEY=fizzbuzz nodemon server.js --ignore dist/ --ignore src/"
     },
     "keywords": [],
     "author": "",
