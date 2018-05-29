@@ -56,6 +56,7 @@ class SignUp extends React.Component {
 
   render() {
     const { firstName, lastName, email, password, errors } = this.state;
+    document.getElementById('theme_css').href = 'style-1.css';
     return (
       <div>
         <h1>Sign Up</h1>

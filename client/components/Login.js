@@ -63,6 +63,7 @@ class Login extends React.Component {
   render(){
     const { email, password, error, errors } = this.state;
     const { onLogin, onChange } = this;
+    document.getElementById('theme_css').href = 'style-1.css';
     return (
       <div>
         <h3> Login </h3>

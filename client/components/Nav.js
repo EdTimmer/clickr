@@ -12,6 +12,13 @@ const Nav = ({ path, user, logout }) => {
           <NavLink to="/" className="navbar-brand header">c l i c k r</NavLink>
         </div>
         <div className="nav-item">
+          {
+            user && user.id ? (
+              <NavLink to={`/people/${user.id}`} className='nav-link' activeClassName="active">My Account</NavLink>
+            ) : null
+          }
+        </div>
+        <div className="nav-item">
           <NavLink to="/people" className='nav-link' activeClassName="active">People</NavLink>
         </div>
         <div className="nav-item">

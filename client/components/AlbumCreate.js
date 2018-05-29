@@ -7,7 +7,8 @@ class AlbumCreate extends Component {
     super(props);
     this.state = {
       name: '',
-      userId: this.props.userId      
+      // userId: this.props.userId,
+      personId: this.props.personId   
     };
     this.onChange = this.onChange.bind(this);
     this.onSave = this.onSave.bind(this);
@@ -34,9 +35,7 @@ class AlbumCreate extends Component {
             <div>
               <input name="name" onChange={onChange} placeholder="Album Name" />
             </div><br />
-            
-            
-            
+                    
             <button type="submit" disabled={!name}> Make Album </button>
           </form>
         </div>
@@ -45,10 +44,11 @@ class AlbumCreate extends Component {
   }
 }
 
-const mapState = ({ users, albums }, { userId }) => {
-  // const user = users.find(user => user.id === id);
+const mapState = ({ people, albums }, { personId }) => {
+  // const person = people.find(person => person.id === userId);
   return {
-    userId
+    // userId,
+    personId
   };
 };
 
