@@ -127,7 +127,13 @@ class Person extends React.Component {
             })
           }
         </div>
-        <button type="submit" onClick={onDelete}>Delete person</button>
+        <div>
+          {
+            person.email === user.email ? (
+              <button type="submit" onClick={onDelete}>Delete Account And All Of Your Photos</button>
+            ) : null
+          }
+        </div>
       </div>
     );
   }

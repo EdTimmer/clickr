@@ -10,7 +10,7 @@ class PhotoCreate extends Component {
       title: '',
       description: '',
       personId: this.props.person.id,
-      albumId: -1
+      albumId: null
     };
     this.onChange = this.onChange.bind(this);
     this.onSave = this.onSave.bind(this);
@@ -41,8 +41,11 @@ class PhotoCreate extends Component {
   onSave(ev) {
     ev.preventDefault();
     const photoInfo = this.state;
+    // if (this.state.albumId === -1) {
+    //   this.setState({albumId: null})
+    // }
     this.props.savePhoto(photoInfo)
-      .then(() => this.setState({ albumId: -1 }));
+      .then(() => this.setState({ albumId: null }));
   }
 
   render(){
@@ -74,7 +77,7 @@ class PhotoCreate extends Component {
                 }
               </select>
             </div>
-            <button type="submit" disabled={(albumId * 1 === -1) || !imageURL }> Upload </button>
+            <button type="submit" disabled={ !imageURL }> Upload </button>
           </form>
         </div>
       </div>

@@ -20,7 +20,7 @@ class Album extends React.Component {
     const { id, person, people, album, photosAlbum, albums, photos, albumsUser, photosUser, user } = this.props;
     const { showPhotoCreate } = this;
     const { showCreate } = this.state;
-    if (!album) {
+    if (!album || !person) {
       return null;
     }
     
