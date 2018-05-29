@@ -25,7 +25,6 @@ class PhotoCreate extends Component {
     reader.addEventListener('load', () => {
       const image = reader.result;
       this.setState({ imageURL: image });
-      console.log('image is:', image);
       preview.src = image;
     }, false);
 
