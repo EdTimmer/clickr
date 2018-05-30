@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const People = ({people, albums, photos}) => {
   if (people.length > 0) {
-    console.log('people are:', people);
+    document.getElementById('theme_css').href = 'style-1.css';
     return (
       <div className="conatiner">
       <div className="row">   

@@ -13,12 +13,12 @@ class AlbumForPhoto extends React.Component {
     this.onSave = this.onSave.bind(this);
   }
   onChange(ev) {
-    this.setState({ [ev.target.name]: ev.target.value });
+    this.setState({ [ev.target.name]: ev.target.value * 1 });
   }
   onSave(ev) {
     ev.preventDefault();
     const photoInfo = {
-      id: this.photo.id,
+      id: this.props.photo.id,
       albumId: this.state.albumId,
       theme: this.props.person ? this.props.person.theme : 'style-1.css'
     }
@@ -27,6 +27,7 @@ class AlbumForPhoto extends React.Component {
   render() {
     const { person, photo, albumsPerson } = this.props;
     const { onChange, onSave } = this;
+    const { albumId } = this.state;
 
     if (!photo && !person) {
       return null;
@@ -35,8 +36,8 @@ class AlbumForPhoto extends React.Component {
     console.log('albumsPerson is:', albumsPerson);
     return (
       <div className="container">    
-test
-        {/*<form onSubmit={ onSave }>
+
+        <form onSubmit={ onSave }>
           <div className='form-group'>
             <select name='albumId' onChange={onChange}>
               <option value="-1"> Select Album </option>
@@ -44,14 +45,15 @@ test
                 albumsPerson.map(album => <option key={album.id} value={album.id}> {album.name} </option>)
               }
             </select>
-          </div>
-            </form>*/}
+            <button>Save</button>
+          </div>          
+        </form>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ people, albums, photos, user }, { id, albumsPerson, person, photo }) => {
+const mapStateToProps = ({ user }, { albumsPerson, person, photo }) => {
   // const photo = photos.find( photo => photo.id === id );
   // const albumsPerson = albums.find(album => album.personId === user.id);
   // const person = people.find( person => person.id === user.id);

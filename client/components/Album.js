@@ -69,8 +69,17 @@ class Album extends React.Component {
 
 const mapStateToProps = ({ people, albums, photos, user }, { id }) => {
   const album = albums.find( album => album.id === id );
+  if (!album) {
+    return null;
+  }
   const photosAlbum = photos.filter( photo => photo.albumId === album.id);
+  if (!photosAlbum) {
+    return null;
+  }
   const person = people.find(person => person.id === album.personId);
+  if (!person) {
+    return null;
+  }
   // const photosUser = photos.filter( photo => photo.personId === person.id);
   return {
     // person,

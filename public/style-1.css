@@ -17,3 +17,18 @@ body {
   margin: 15px;
   padding: 10px;
 }
+.active {
+  color: black
+}
+button {
+  margin: 20px;
+  border-radius: 5px;
+  padding: 5px 5px 5px 5px;
+  height: 40px;
+}
+select {
+  margin: 20px, 0, 20px, 20px;
+  border-radius: 5px;
+  padding: 5px 1px 5px 5px;
+  height: 40px;
+}
