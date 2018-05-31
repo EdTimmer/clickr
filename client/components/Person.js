@@ -12,7 +12,8 @@ class Person extends React.Component {
     this.state = {
       showPhotoCreate: false,
       showAlbumCreate: false,
-      theme: this.props.person ? this.props.person.theme : 'style-1.css'
+      theme: this.props.person ? this.props.person.theme : 'style-5.css'
+      // theme: this.props.person.theme
     };
     this.photoCreate = this.photoCreate.bind(this);
     this.albumCreate = this.albumCreate.bind(this);
@@ -46,13 +47,20 @@ class Person extends React.Component {
     const { person, albumsPerson, photosPerson, user } = this.props;
     const { photoCreate, albumCreate, saveTheme, onChange, onDelete } = this;
     const { showPhotoCreate, showAlbumCreate, theme } = this.state;
-    if (!person || !albumsPerson) {
+    if (!person) {
       return null;
     }
-    document.getElementById('theme_css').href = this.state.theme;
+    if (!albumsPerson) {
+      return null;
+    }
+    if (!theme) {
+      return null;
+    }
+    document.getElementById('theme_css').href = theme;
 
-    return (
+    return (      
       <div className="container">
+      <style><link rel='stylesheet' type='text/css' href={theme} id="theme_css" /></style>
         <h1>{ person.name }</h1>
         {
           person.email === user.email ? (
@@ -67,7 +75,7 @@ class Person extends React.Component {
                 {
                   showPhotoCreate ? <PhotoCreate id={this.props.id} parentHistory={this.props.history} albumsPerson={ albumsPerson } /> : null
                 }
-              </div><br />
+              </div>
               <div>
                 {
                   showAlbumCreate ? null : ( <button onClick={ albumCreate }> Add Album </button> )
@@ -120,8 +128,9 @@ class Person extends React.Component {
               return (
                 <div key={photo.id}>
                   <img src={photo.imageURL} width={600} /><br />
-                  <p>{photo.title}</p>
-                  <Link to={`/photos/${photo.id}`}>details</Link><br />
+                  <p>{photo.title}<br />
+                  <Link to={`/photos/${photo.id}`}>details</Link>
+                  </p>
                 </div>
               );
             })
@@ -130,7 +139,10 @@ class Person extends React.Component {
         <div>
           {
             person.email === user.email ? (
-              <button type="submit" onClick={onDelete}>Delete Account And All Of Your Photos</button>
+              <div>
+                <p>Delete your account and all of your albums and photos</p>
+                <button type="submit" onClick={onDelete}>Delete Account</button>
+              </div>
             ) : null
           }
         </div>
@@ -140,14 +152,16 @@ class Person extends React.Component {
 }
 
 const mapStateToProps = ({ people, albums, photos, user }, { id }) => {
-  const person = people.find( person => person.id === id );
+  const person = people.find( _person => _person.id === id );
   const albumsPerson = albums.filter( album => album.personId === id);
   const photosPerson = photos.filter( photo => photo.personId === id);
+  // const theme = person.theme;
   return {
     person,
     albumsPerson,
     photosPerson,
-    user
+    user,
+    // theme
   };
 };
 

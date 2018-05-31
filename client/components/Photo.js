@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import AlbumForPhoto from './AlbumForPhoto';
+import PhotoDelete from './PhotoDelete';
 
-const Photo = ({user, people, albums, photos, id }) => {
+const Photo = ({user, people, albums, photos, id, history }) => {
 
-  // console.log('person is:', person);
-  // console.log('albumsPerson is:', albumsPerson);
   const photo = photos.find( _photo => _photo.id === id );
   if (!photo) {
     return null;
@@ -21,21 +20,24 @@ const Photo = ({user, people, albums, photos, id }) => {
   }
 
   // document.getElementById('theme_css').href = person.theme;
-  document.getElementById('theme_css').href = '/vendor/style-1.css';
-
+  // document.getElementById('theme_css').href = '/vendor/style-1.css';
+  // console.log('history:', history);
 
   return (
     <div className="container">
     <style><link rel='stylesheet' type='text/css' href={person.theme} id="theme_css" /></style>
       <div>
-        <img className="center" src={photo.imageURL} width={1000} /><br />
+        <img className="img-home" src={photo.imageURL} width={1000} /><br />
         <p>{photo.title}</p>
         <p>{photo.description}</p>
       </div>
       <div>
       {
         person.email === user.email ? (
-          <AlbumForPhoto photo={photo} person={person} albumsPerson={albumsPerson} />
+          <div>
+            <AlbumForPhoto photo={photo} person={person} albumsPerson={albumsPerson} />
+            <PhotoDelete photo={photo} parentHistory={history} id={person.id} />
+          </div>
         ) : null
       }
       </div>

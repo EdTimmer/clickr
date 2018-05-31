@@ -51,11 +51,11 @@ export const getAlbums = () => (
   )
 );
 
-export const deleteAlbum = (album, history) => (
+export const deleteAlbum = (album, history, id) => (
   dispatch => (
     axios.delete(`api/albums/${album.id}`)
       .then( () => dispatch(deleteAlbumInStore(album)))
-      .then( () => history.push('/albums'))
+      .then( () => history.push(`/people/${id}`))
   )
 );
 

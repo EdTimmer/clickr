@@ -40,14 +40,18 @@ h6 {
   padding: 10px;
 }
 button {
-  margin: 20px;
+  margin: 10px;
   border-radius: 5px;
   padding: 5px 5px 5px 5px;
   height: 40px;
+  background: darkgreen;
+  color: white;
 }
 select {
-  margin: 20px, 0, 20px, 20px;
+  margin: 10px, 0, 10px, 10px;
   border-radius: 5px;
   padding: 5px 1px 5px 5px;
   height: 40px;
+  background: darkgreen;
+  color: white;
 }

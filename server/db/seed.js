@@ -84,50 +84,71 @@ const albums = [
 const photos = [
   {
     imageURL: '/images/ed1.jpg',
-    title: 'One',
-    description: 'Image One',
+    title: 'Selfie',
+    description: 'Using Lubitel 2',
     albumId: 1,
     personId: 1
   },
   {
     imageURL: '/images/natik_camera.jpg',
-    title: 'Two',
-    description: 'Image Two',
+    title: 'Natasha',
+    description: 'On Brighton Beach',
     albumId: 1,
     personId: 1
   },
   {
     imageURL: '/images/alpacas.jpg',
-    title: 'Three',
-    description: 'Image Three',
+    title: 'The Gang',
+    description: 'Long Island Yarn & Farm',
     albumId: 2,
     personId: 2
   },
   {
     imageURL: '/images/Katya2.jpg',
-    title: 'Three',
-    description: 'Katya',
+    title: 'Katya',
+    description: 'Abide',
     albumId: 2,
     personId: 2
   },
   {
     imageURL: '/images/Masha&Shurik.jpg',
-    title: 'Three',
-    description: 'Masha and Shurik',
+    title: 'Masha and Shurik',
+    description: 'Masha found Shurik in a park',
     albumId: 2,
     personId: 2
   },
   {
-    imageURL: '/images/empire.jpg',
-    title: 'Three',
-    description: 'Image Three',
+    imageURL: '/images/bridge.jpg',
+    title: 'Verrazano',
+    description: 'View from Brooklyn',
     albumId: 3,
     personId: 3
   },
   {
     imageURL: '/images/city.jpg',
-    title: 'Three',
-    description: 'city',
+    title: 'NYC',
+    description: 'View from the Freedom Tower',
+    albumId: 3,
+    personId: 3
+  },
+  {
+    imageURL: '/images/natik_zoey.jpg',
+    title: 'Natasha with Zoey',
+    description: 'Polaroid!',
+    albumId: 1,
+    personId: 1
+  },
+  {
+    imageURL: '/images/maine.jpg',
+    title: 'Lighthouse in Maine',
+    description: 'Visiting Maine',
+    albumId: 3,
+    personId: 3
+  },
+  {
+    imageURL: '/images/brooklyn.jpg',
+    title: 'Brooklyn Bridge',
+    description: 'View from a taxi',
     albumId: 3,
     personId: 3
   }

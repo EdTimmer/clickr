@@ -66,8 +66,8 @@ class Login extends React.Component {
     document.getElementById('theme_css').href = 'style-1.css';
     return (
       <div>
-        <h3> Login </h3>
-        {
+        <h3> Login </h3><br />
+          {
             error && (
               <div> The email or password you entered is not correct, please try again.
               </div>
@@ -78,6 +78,7 @@ class Login extends React.Component {
             <input value={ email } onChange={ onChange } name="email" placeholder="Email" />
             <div>{ errors.email }</div>
           </div>
+          <br />
           <div>
             <input type="password" value={ password } onChange={ onChange } name="password" placeholder="Password" />
             <div>{ errors.password }</div>

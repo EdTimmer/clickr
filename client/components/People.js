@@ -6,9 +6,8 @@ const People = ({people, albums, photos}) => {
   if (people.length > 0) {
     document.getElementById('theme_css').href = 'style-1.css';
     return (
-      <div className="conatiner">
-      <div className="row">   
-        <div className="col" />           
+      <div className="container">
+      <div className="row">
         <div className="col">
           <h1>All people</h1><br />
           {

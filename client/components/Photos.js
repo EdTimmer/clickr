@@ -8,7 +8,7 @@ const Photos = ({photos, albums, people}) => {
     document.getElementById('theme_css').href = 'style-1.css';
 
     return (
-      <div>
+      <div className="container">
         <h1>All Photos</h1>
           <p><i>Number of photos in clickr:</i> <strong>{photos.length}</strong></p>
         <div className="container-1">
@@ -20,9 +20,9 @@ const Photos = ({photos, albums, people}) => {
               return (
                 <div key={photo.id} className="photos-box">
                   <img src={photo.imageURL} height={400} /><br />
-                  <Link to={`/photos/${photo.id}`}>details</Link><br />
-                  <p>by: {person.name}</p>
-                  <p><i>In album:</i> {albumName}</p>
+                  <Link to={`/photos/${photo.id}`}>details</Link>
+                  <p>by: <Link to={`people/${person.id}`}>{person.name}</Link><br />
+                  <i>In album:</i> {albumName}</p>
                 </div>
               );
             })

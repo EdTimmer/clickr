@@ -1,30 +1,10 @@
 .img-home {
   max-width: 100%;
 }
-
 body {
-  background-color: lightblue;
-}
-p {
-  font-family: "Lucida Console", monospace
-}
-h1 {
-  font-family: "Lucida Console", monospace
-}
-h2 {
-  font-family: "Lucida Console", monospace
-}
-h3 {
-  font-family: "Lucida Console", monospace
-}
-h4 {
-  font-family: "Lucida Console", monospace
-}
-h5 {
-  font-family: "Lucida Console", monospace
-}
-h6 {
-  font-family: "Lucida Console", monospace
+  background-color: pink;
+  /* background-image: url("images/catsbackground.jpg");
+  background-repeat: repeat; */
 }
 .container-1 {
   display: inline-flex;
@@ -39,19 +19,22 @@ h6 {
   margin: 15px;
   padding: 10px;
 }
+.active {
+  color: black
+}
 button {
   margin: 10px;
   border-radius: 5px;
   padding: 5px 5px 5px 5px;
   height: 40px;
-  background: darkblue;
-  color: white;
+  background: white;
+  color: purple;
 }
 select {
   margin: 10px, 0, 10px, 10px;
   border-radius: 5px;
   padding: 5px 1px 5px 5px;
   height: 40px;
-  background: darkblue;
-  color: white;
+  background: white;
+  color: purple;
 }

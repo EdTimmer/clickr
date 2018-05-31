@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PhotoCreateInAlbum from './PhotoCreateInAlbum';
+import AlbumDelete from './AlbumDelete';
 
 class Album extends React.Component {
   constructor(props) {
@@ -54,13 +55,23 @@ class Album extends React.Component {
                 <div key={photo.id}>
                   <div>
                     <img src={photo.imageURL} width={600} /><br />
-                    <p>{photo.title}</p>
+                    <p>{photo.title}<br />
                     <Link to={`/photos/${photo.id}`}>details</Link>
+                    </p>
                   </div>
                 </div>
               );
             })
           }
+        </div>
+        <div>
+        {
+          person.email === user.email ? (
+            <div>
+               <AlbumDelete album={album} parentHistory={this.props.history} id={person.id} />
+            </div>
+          ) : null
+        }
         </div>
       </div>
     );

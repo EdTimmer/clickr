@@ -56,11 +56,11 @@ export const getPhotos = () => (
   )
 );
 
-export const deletePhoto = (photo, history) => (
+export const deletePhoto = (photo, history, id) => (
   dispatch => (
     axios.delete(`api/photos/${photo.id}`)
       .then( () => dispatch(deletePhotoInStore(photo)))
-      .then( () => history.push('/photos'))
+      .then( () => history.push(`/people/${id}`))
   )
 );
 

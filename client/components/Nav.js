@@ -32,7 +32,7 @@ const Nav = ({ path, user, logout }) => {
           user && user.id ? (
             <NavLink to='/' className='nav-link' onClick={ logout }>Logout { user.firstName }</NavLink>
           ) : (
-            <NavLink className="nav-link" to="/login" activeClassName="active">Log In</NavLink>
+            <NavLink className="nav-link" to="/login">Log In</NavLink>
           )
         }
         </div>
