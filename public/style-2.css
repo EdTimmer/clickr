@@ -55,3 +55,7 @@ select {
   background: darkgreen;
   color: white;
 }
+.clickr {
+  font-size: 2em;
+  /* font-weight: bold; */
+}

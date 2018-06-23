@@ -15,9 +15,11 @@ const People = ({people, albums, photos}) => {
               return (
                 <div key={person.id}>
                   <div>
-                    <p><Link to={`/people/${person.id}`}>{person.name}</Link></p>
-                    <p><i>Number of albums:</i> {albums.filter( album => album.personId === person.id).length}</p> 
-                    <p><i>Number of photos:</i> {photos.filter( photo => photo.personId === person.id).length}</p>                    
+                    <p>
+                      <Link to={`/people/${person.id}`}>{person.name}</Link><br />
+                      <i>Number of albums:</i> {albums.filter( album => album.personId === person.id).length}<br />
+                      <i>Number of photos:</i> {photos.filter( photo => photo.personId === person.id).length}<br />
+                    </p>
                   </div>
                 </div>
               );
@@ -25,6 +27,7 @@ const People = ({people, albums, photos}) => {
           }
         </div>
         <div className="col">
+          <p />
           <p><i>Number of people:</i> <strong>{people.length}</strong></p>
           {/*<Link to="/personcreate"><button>Add new person</button></Link>*/}
         </div>

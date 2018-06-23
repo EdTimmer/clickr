@@ -38,3 +38,7 @@ select {
   background: white;
   color: purple;
 }
+.clickr {
+  font-size: 2em;
+  /* font-weight: bold; */
+}

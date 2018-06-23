@@ -68,17 +68,22 @@ const users = [
 
 const albums = [
   {
-    name: 'First Album',
+    name: 'Portraits',
     personId: 1
   },
   {
-    name: 'Second Album',
+    name: 'Animals',
     personId: 2
   },
   {
-    name: 'Third Album',
+    name: 'Sprocket Rocket',
     personId: 3
+  },
+  {
+    name: 'Holga',
+    personId: 1
   }
+
 ];
 
 const photos = [
@@ -151,6 +156,20 @@ const photos = [
     description: 'View from a taxi',
     albumId: 3,
     personId: 3
+  },
+  {
+    imageURL: '/images/canopy.jpg',
+    title: 'In a Galaxy far far away',
+    description: 'with Holga',
+    albumId: 4,
+    personId: 1
+  },
+  {
+    imageURL: '/images/empire.jpg',
+    title: 'Empire State Building',
+    description: 'zoom lens',
+    albumId: 4,
+    personId: 1
   }
 ];
 

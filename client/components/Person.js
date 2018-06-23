@@ -53,14 +53,15 @@ class Person extends React.Component {
     if (!albumsPerson) {
       return null;
     }
-    if (!theme) {
+    let myTheme = person.theme;
+    if (!myTheme) {
       return null;
     }
-    document.getElementById('theme_css').href = theme;
+    // document.getElementById('theme_css').href = theme;
 
     return (      
       <div className="container">
-      <style><link rel='stylesheet' type='text/css' href={theme} id="theme_css" /></style>
+      <style><link rel='stylesheet' type='text/css' href={myTheme} id="theme_css" /></style>
         <h1>{ person.name }</h1>
         {
           person.email === user.email ? (
@@ -101,7 +102,7 @@ class Person extends React.Component {
                   })
                 }
               </select>
-              <button> Save Theme </button>
+              <button> Try Theme </button>
             </form>
             </div>
           </div>
@@ -111,15 +112,18 @@ class Person extends React.Component {
         <div className="center"><br />
           <p>Albums:</p>
           {
-            albumsPerson.map(album => {
-              return (
-                <ul key={album.id}>
-                  <li>
-                    <Link to={`/albums/${album.id}`}>{album.name}</Link>
-                  </li>
-                </ul>
-              );
-            })
+            albumsPerson ? (
+              albumsPerson.map(album => {
+                return (
+                  <ul key={album.id}>
+                    <li>
+                      <Link to={`/albums/${album.id}`}>{album.name}</Link>
+                    </li>
+                  </ul>
+                );
+              })
+            ) : ('none')
+            
           }
         </div>
         <div align="center">

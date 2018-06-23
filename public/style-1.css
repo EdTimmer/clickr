@@ -17,9 +17,9 @@ body {
   margin: 15px;
   padding: 10px;
 }
-.active {
+/* .active {
   color: black
-}
+} */
 button {
   margin: 10px;
   border-radius: 5px;
@@ -31,4 +31,8 @@ select {
   border-radius: 5px;
   padding: 5px 1px 5px 5px;
   height: 40px;
+}
+.clickr {
+  font-size: 2em;
+  /* font-weight: bold; */
 }

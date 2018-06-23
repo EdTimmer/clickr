@@ -28,8 +28,10 @@ const Photo = ({user, people, albums, photos, id, history }) => {
     <style><link rel='stylesheet' type='text/css' href={person.theme} id="theme_css" /></style>
       <div>
         <img className="img-home" src={photo.imageURL} width={1000} /><br />
-        <p>{photo.title}</p>
-        <p>{photo.description}</p>
+        <p>
+          {photo.title}<br />
+          {photo.description}
+        </p>
       </div>
       <div>
       {

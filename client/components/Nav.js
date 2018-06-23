@@ -8,8 +8,8 @@ const Nav = ({ path, user, logout }) => {
   return (
     <div className="navbar navbar-expand-lg navbar-light container">
         
-        <div className="nav-item">
-          <NavLink to="/" className="navbar-brand header">c l i c k r</NavLink>
+        <div className="nav-link">
+          <NavLink to="/" className="navbar clickr">c l i c k r</NavLink>
         </div>
         <div className="nav-item">
           {

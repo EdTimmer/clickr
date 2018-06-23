@@ -19,10 +19,12 @@ const Photos = ({photos, albums, people}) => {
               const albumName = album ? (<Link to={`/albums/${album.id}`}>{album.name}</Link>) : ('none');
               return (
                 <div key={photo.id} className="photos-box">
-                  <img src={photo.imageURL} height={400} /><br />
-                  <Link to={`/photos/${photo.id}`}>details</Link>
-                  <p>by: <Link to={`people/${person.id}`}>{person.name}</Link><br />
-                  <i>In album:</i> {albumName}</p>
+                  <img src={photo.imageURL} height={200} /><br />
+                  <p>
+                    {photo.title}<br />by: <Link to={`people/${person.id}`}>{person.name}</Link><br />
+                    <i>In album:</i> {albumName}<br />
+                    <Link to={`/photos/${photo.id}`}>details</Link>
+                  </p>
                 </div>
               );
             })
